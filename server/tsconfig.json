@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "esnext",
     "module": "commonjs",
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "inlineSourceMap": false,
     "moduleResolution": "node",
-    "sourceMap": true
+    "sourceMap": true,
+    "lib": ["dom", "esnext"],
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node"]
   },
   "include": ["src"]
 }

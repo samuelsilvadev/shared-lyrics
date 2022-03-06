@@ -1,0 +1,22 @@
+{
+  "songs": [
+    {
+      "id": 1,
+      "title": "Written by me"
+    }
+  ],
+  "lyrics": [
+    {
+      "id": 1,
+      "content": "first part",
+      "songId": 1,
+      "likes": 100
+    },
+    {
+      "id": 2,
+      "content": "second part",
+      "songId": 1,
+      "likes": 1000
+    }
+  ]
+}

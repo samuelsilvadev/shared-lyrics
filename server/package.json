@@ -4,18 +4,29 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --exec ts-node 'src/index.ts'",
+    "start:dev": "concurrently \"yarn start:graphql\" \"yarn start:service\"",
+    "start:graphql": "nodemon --exec ts-node 'src/index.ts'",
+    "start:service": "json-server --watch db/index.json --port 4001",
     "format": "prettier --write . --loglevel=error"
   },
   "devDependencies": {
+    "@types/node": "^17.0.21",
+    "commitizen": "^4.2.4",
+    "concurrently": "^7.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "4.3.8",
+    "json-server": "^0.17.0",
+    "lint-staged": "^11.2.3",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "ts-node": "^10.6.0",
-    "typescript": "^4.6.2",
-    "husky": "4.3.8",
-    "lint-staged": "^11.2.3",
-    "commitizen": "^4.2.4",
-    "cz-conventional-changelog": "^3.3.0"
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "apollo-server": "^3.6.3",
+    "dotenv": "^16.0.0",
+    "graphql": "^16.3.0",
+    "isomorphic-fetch": "^3.0.0"
   },
   "prettier": {},
   "husky": {

@@ -1,6 +1,7 @@
 import "./config";
 import { ApolloServer, gql } from "apollo-server";
 import { abstractedFetch } from "./abstractedFetch";
+import type { Lyric, Song } from "./types";
 
 const typeDefs = gql`
   type Song {
@@ -28,12 +29,10 @@ const resolvers = {
     lyrics: () => abstractedFetch("lyrics"),
   },
   Song: {
-    lyrics: (song: { id: string }) =>
-      abstractedFetch(`songs/${song.id}/lyrics`),
+    lyrics: (song: Song) => abstractedFetch(`songs/${song.id}/lyrics`),
   },
   Lyric: {
-    song: (lyric: { id: string; songId: string }) =>
-      abstractedFetch(`songs/${lyric.songId}`),
+    song: (lyric: Lyric) => abstractedFetch(`songs/${lyric.songId}`),
   },
 };
 

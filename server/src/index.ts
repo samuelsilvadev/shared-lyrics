@@ -21,6 +21,10 @@ const typeDefs = gql`
     songs: [Song]
     lyrics: [Lyric]
   }
+
+  type Mutation {
+    addSong(title: String!): Song!
+  }
 `;
 
 const resolvers = {
@@ -33,6 +37,19 @@ const resolvers = {
   },
   Lyric: {
     song: (lyric: Lyric) => abstractedFetch(`songs/${lyric.songId}`),
+  },
+  Mutation: {
+    addSong: (root: {}, { title }: { title: string }) => {
+      return abstractedFetch("songs", {
+        method: "POST",
+        body: JSON.stringify({
+          title,
+        }),
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+    },
   },
 };
 

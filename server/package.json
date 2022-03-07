@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start:dev": "concurrently \"yarn start:graphql\" \"yarn start:service\"",
-    "start:graphql": "nodemon --exec ts-node 'src/index.ts'",
+    "start:graphql": "nodemon --exec ts-node 'src/index.ts' --ignore \"db/**\"",
     "start:service": "json-server --watch db/index.json --port 4001",
     "format": "prettier --write . --loglevel=error"
   },

@@ -13,4 +13,4 @@ export const abstractedPost = (
     headers: {
       "content-type": "application/json",
     },
-  }).then(toJson);
+  });

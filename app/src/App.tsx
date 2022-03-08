@@ -9,7 +9,7 @@ function App() {
     <Suspense fallback="loading resources...">
       <Switch>
         <Route path="/" exact component={SongList} />
-        <Route path="/new-song" exact component={NewSong} />
+        <Route path="/songs/new" exact component={NewSong} />
       </Switch>
     </Suspense>
   );

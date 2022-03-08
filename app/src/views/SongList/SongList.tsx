@@ -44,7 +44,7 @@ function SongList() {
       </Box>
       <Button
         as={Link}
-        to="/new-song"
+        to="/songs/new"
         variant="solid"
         colorScheme="yellow"
         marginInline="4"

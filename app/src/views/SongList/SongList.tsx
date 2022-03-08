@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { Box, ListItem, UnorderedList } from "@chakra-ui/react";
 
 const GET_SONGS_QUERY = gql`
   query GetAllSongs {
@@ -21,11 +22,24 @@ function SongList() {
   }
 
   return (
-    <ul>
+    <Box as={UnorderedList} w="100%" p={4} m="0" listStyleType="none">
       {data?.songs.map(({ id, title }) => {
-        return <li key={id}>{title}</li>;
+        return (
+          <ListItem
+            border="1px"
+            padding="5"
+            sx={{
+              "&:not(:last-child)": {
+                marginBlockEnd: "2",
+              },
+            }}
+            key={id}
+          >
+            {title}
+          </ListItem>
+        );
       })}
-    </ul>
+    </Box>
   );
 }
 

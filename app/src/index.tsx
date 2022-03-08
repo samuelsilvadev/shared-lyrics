@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
+import App from "./App";
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_SERVER,
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <App />
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
       </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>,

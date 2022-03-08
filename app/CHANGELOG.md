@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/samuelsilvadev/shared-lyrics/compare/v0.0.1...v0.0.2) (2022-03-08)
+
+### Features
+
+- **app:** add a heading on the new song component ([a11d770](https://github.com/samuelsilvadev/shared-lyrics/commit/a11d7705fca821650bf917a4174c64b3972947af))
+- **app:** add new song button and create basic new song view ([8554dfc](https://github.com/samuelsilvadev/shared-lyrics/commit/8554dfc68bc484d7443dab590ce826dc8beb6726))
+- **app:** forward user to list of songs after add a new song ([b760fed](https://github.com/samuelsilvadev/shared-lyrics/commit/b760fed79b6d005a8bddfa13f5fcca8a4588dfea))
+- **app:** save a new song using `useMutation` ([cb350b2](https://github.com/samuelsilvadev/shared-lyrics/commit/cb350b28806ec6a2f981b83f00db4af6f41d565c))
+- **app:** setup chakra ui and update song list styles ([976d6da](https://github.com/samuelsilvadev/shared-lyrics/commit/976d6da61f1bf9f59303d2bc6536a78ddf6ee28b))
+
 ### 0.0.1 (2022-03-08)
 
 ### Features

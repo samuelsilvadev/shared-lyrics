@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
-import { Box, ListItem, UnorderedList } from "@chakra-ui/react";
+import { Box, Button, ListItem, UnorderedList } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const GET_SONGS_QUERY = gql`
   query GetAllSongs {
@@ -22,24 +23,35 @@ function SongList() {
   }
 
   return (
-    <Box as={UnorderedList} w="100%" p={4} m="0" listStyleType="none">
-      {data?.songs.map(({ id, title }) => {
-        return (
-          <ListItem
-            border="1px"
-            padding="5"
-            sx={{
-              "&:not(:last-child)": {
-                marginBlockEnd: "2",
-              },
-            }}
-            key={id}
-          >
-            {title}
-          </ListItem>
-        );
-      })}
-    </Box>
+    <>
+      <Box as={UnorderedList} w="100%" p="4" m="0" listStyleType="none">
+        {data?.songs.map(({ id, title }) => {
+          return (
+            <ListItem
+              border="2px"
+              padding="5"
+              sx={{
+                "&:not(:last-child)": {
+                  marginBlockEnd: "2",
+                },
+              }}
+              key={id}
+            >
+              {title}
+            </ListItem>
+          );
+        })}
+      </Box>
+      <Button
+        as={Link}
+        to="/new-song"
+        variant="solid"
+        colorScheme="yellow"
+        marginInline="4"
+      >
+        Create new song
+      </Button>
+    </>
   );
 }
 

@@ -1,6 +1,8 @@
 import { FormEventHandler, useState } from "react";
 import { Button, FormLabel, Input, Box, Heading } from "@chakra-ui/react";
 import { gql, useMutation } from "@apollo/client";
+import { Link, useHistory } from "react-router-dom";
+import { GET_SONGS } from "../SongList/queries";
 
 const SAVE_SONG_MUTATION = gql`
   mutation SaveSong($title: String!) {
@@ -16,6 +18,7 @@ type SaveSongsMutationResponse = {
 };
 
 function NewSong() {
+  const { push } = useHistory();
   const [saveSong] = useMutation<SaveSongsMutationResponse>(SAVE_SONG_MUTATION);
   const [songTitle, setSongTitle] = useState("");
 
@@ -26,11 +29,24 @@ function NewSong() {
       variables: {
         title: songTitle,
       },
+      refetchQueries: [{ query: GET_SONGS }],
+    }).then(() => {
+      push("/");
     });
   };
 
   return (
     <>
+      <Button
+        as={Link}
+        to="/"
+        variant="link"
+        colorScheme="yellow"
+        marginBlockStart="4"
+        marginInline="4"
+      >
+        Back
+      </Button>
       <Heading as="h1" marginBlockStart="4" marginInline="4">
         Create a new song
       </Heading>

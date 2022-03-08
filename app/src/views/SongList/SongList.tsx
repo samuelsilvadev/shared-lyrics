@@ -1,22 +1,14 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Box, Button, ListItem, UnorderedList } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-
-const GET_SONGS_QUERY = gql`
-  query GetAllSongs {
-    songs {
-      id
-      title
-    }
-  }
-`;
+import { GET_SONGS } from "./queries";
 
 type GetSongsQueryResponse = {
   songs: { title: string; id: string }[];
 };
 
 function SongList() {
-  const { data, loading } = useQuery<GetSongsQueryResponse>(GET_SONGS_QUERY);
+  const { data, loading } = useQuery<GetSongsQueryResponse>(GET_SONGS);
 
   if (loading) {
     return <>Loading...</>;

@@ -1,5 +1,16 @@
+import { lazy, Suspense } from "react";
+import { Route, Switch } from "react-router-dom";
+
+const SongList = lazy(() => import("./views/SongList"));
+
 function App() {
-  return <h1>Create React App N</h1>;
+  return (
+    <Suspense fallback="loading resources...">
+      <Switch>
+        <Route path="/" component={SongList} />
+      </Switch>
+    </Suspense>
+  );
 }
 
 export default App;

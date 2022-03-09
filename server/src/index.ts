@@ -23,6 +23,7 @@ const typeDefs = gql`
 
   type Query {
     songs: [Song]
+    song(id: ID!): Song
     lyrics: [Lyric]
   }
 
@@ -36,6 +37,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     songs: () => abstractedFetch("songs"),
+    song: (root: {}, { id }: { id: string }) => abstractedFetch(`songs/${id}`),
     lyrics: () => abstractedFetch("lyrics"),
   },
   Song: {

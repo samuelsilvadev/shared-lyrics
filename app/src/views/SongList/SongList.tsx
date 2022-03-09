@@ -1,18 +1,35 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { Box, Button, ListItem, UnorderedList } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { GET_SONGS } from "./queries";
+import { DELETE_SONG, GET_SONGS } from "./graphql";
 
 type GetSongsQueryResponse = {
   songs: { title: string; id: string }[];
 };
 
+type DeleteSongsMutationResponse = {
+  deleteSong: { id: string };
+};
+
 function SongList() {
-  const { data, loading } = useQuery<GetSongsQueryResponse>(GET_SONGS);
+  const {
+    data,
+    loading,
+    refetch: refetchSongs,
+  } = useQuery<GetSongsQueryResponse>(GET_SONGS);
+  const [deleteSong] = useMutation<DeleteSongsMutationResponse>(DELETE_SONG);
 
   if (loading) {
     return <>Loading...</>;
   }
+
+  const handleOnDeleteSong = (id: string) => () => {
+    deleteSong({
+      variables: {
+        id,
+      },
+    }).then(refetchSongs);
+  };
 
   return (
     <>
@@ -28,8 +45,18 @@ function SongList() {
                 },
               }}
               key={id}
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
             >
               {title}
+              <Button
+                variant="solid"
+                colorScheme="yellow"
+                onClick={handleOnDeleteSong(id)}
+              >
+                delete me
+              </Button>
             </ListItem>
           );
         })}

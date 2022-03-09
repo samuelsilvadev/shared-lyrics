@@ -2,7 +2,7 @@ import { FormEventHandler, useState } from "react";
 import { Button, FormLabel, Input, Box, Heading } from "@chakra-ui/react";
 import { gql, useMutation } from "@apollo/client";
 import { Link, useHistory } from "react-router-dom";
-import { GET_SONGS } from "../SongList/queries";
+import { GET_SONGS } from "../SongList/graphql";
 
 const SAVE_SONG_MUTATION = gql`
   mutation SaveSong($title: String!) {

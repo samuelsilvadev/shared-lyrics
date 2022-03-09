@@ -1,6 +1,10 @@
 import "./config";
 import { ApolloServer, gql } from "apollo-server";
-import { abstractedFetch, abstractedPost } from "./abstractedFetch";
+import {
+  abstractedDelete,
+  abstractedFetch,
+  abstractedPost,
+} from "./abstractedFetch";
 import type { Lyric, Song } from "./types";
 
 const typeDefs = gql`
@@ -24,6 +28,7 @@ const typeDefs = gql`
 
   type Mutation {
     addSong(title: String!): Song!
+    deleteSong(id: ID!): Song!
     addLyricIntoSong(songId: Int!, content: String!): Lyric!
   }
 `;
@@ -44,6 +49,10 @@ const resolvers = {
       abstractedPost("songs", {
         title,
       }),
+    deleteSong: (root: {}, { id }: { id: string }) =>
+      abstractedDelete("songs", id).then(() => ({
+        id,
+      })),
     addLyricIntoSong: (
       root: {},
       { songId, content }: { songId: number; content: string }

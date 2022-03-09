@@ -49,7 +49,7 @@ function SongList() {
               justifyContent="space-between"
               alignItems="center"
             >
-              {title}
+              <Link to={`/songs/${id}`}>{title}</Link>
               <Button
                 variant="solid"
                 colorScheme="yellow"

@@ -43,14 +43,13 @@ function NewSong() {
         variant="link"
         colorScheme="yellow"
         marginBlockStart="4"
-        marginInline="4"
       >
         Back
       </Button>
-      <Heading as="h1" marginBlockStart="4" marginInline="4">
+      <Heading as="h1" marginBlockStart="4">
         Create a new song
       </Heading>
-      <Box as="form" p="4" onSubmit={handleOnSubmit}>
+      <Box as="form" marginBlockStart="4" onSubmit={handleOnSubmit}>
         <FormLabel htmlFor="song-name">Song title:</FormLabel>
         <Input
           id="song-name"

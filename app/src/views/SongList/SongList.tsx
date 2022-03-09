@@ -33,7 +33,13 @@ function SongList() {
 
   return (
     <>
-      <Box as={UnorderedList} w="100%" p="4" m="0" listStyleType="none">
+      <Box
+        as={UnorderedList}
+        w="100%"
+        marginBlock="4"
+        marginInline="0"
+        listStyleType="none"
+      >
         {data?.songs.map(({ id, title }) => {
           return (
             <ListItem
@@ -61,13 +67,7 @@ function SongList() {
           );
         })}
       </Box>
-      <Button
-        as={Link}
-        to="/songs/new"
-        variant="solid"
-        colorScheme="yellow"
-        marginInline="4"
-      >
+      <Button as={Link} to="/songs/new" variant="solid" colorScheme="yellow">
         Create new song
       </Button>
     </>

@@ -10,11 +10,10 @@ function SongDetails() {
         variant="link"
         colorScheme="yellow"
         marginBlockStart="4"
-        marginInline="4"
       >
         Back
       </Button>
-      <Heading as="h1" marginBlockStart="4" marginInline="4">
+      <Heading as="h1" marginBlockStart="4">
         Song Details
       </Heading>
     </>

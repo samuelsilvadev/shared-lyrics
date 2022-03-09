@@ -14,3 +14,8 @@ export const abstractedPost = (
       "content-type": "application/json",
     },
   });
+
+export const abstractedDelete = (endpoint: string, id: string) =>
+  abstractedFetch(`${endpoint}/${id}`, {
+    method: "DELETE",
+  });

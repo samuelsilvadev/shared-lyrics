@@ -1,6 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 import { Button, Heading } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
+import CreateLyric from "./CreateLyric";
+import LyricsList from "./LyricsList";
+import type { Song } from "./types";
 
 const GET_SONG = gql`
   query GetSong($id: ID!) {
@@ -17,15 +20,7 @@ const GET_SONG = gql`
 `;
 
 type GetSongQueryResponse = {
-  song: {
-    id: string;
-    title: string;
-    lyrics: {
-      id: string;
-      content: string;
-      likes: number;
-    }[];
-  } | null;
+  song: Song | null;
 };
 
 function SongDetails() {
@@ -54,6 +49,8 @@ function SongDetails() {
       <Heading as="h1" marginBlockStart="4">
         {data?.song?.title}
       </Heading>
+      {data?.song?.lyrics && <LyricsList lyrics={data.song.lyrics} />}
+      <CreateLyric songId={songId} />
     </>
   );
 }

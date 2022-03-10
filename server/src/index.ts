@@ -3,6 +3,7 @@ import { ApolloServer, gql } from "apollo-server";
 import {
   abstractedDelete,
   abstractedFetch,
+  abstractedPatch,
   abstractedPost,
 } from "./abstractedFetch";
 import type { Lyric, Song } from "./types";
@@ -31,6 +32,7 @@ const typeDefs = gql`
     addSong(title: String!): Song!
     deleteSong(id: ID!): Song!
     addLyricIntoSong(songId: ID!, content: String!): Song!
+    likeLyric(id: ID!): Lyric!
   }
 `;
 
@@ -67,6 +69,13 @@ const resolvers = {
         }),
         abstractedFetch(`songs/${songId}`),
       ]).then(([lyric, song]) => song);
+    },
+    likeLyric: (root: {}, { id }: { id: string }) => {
+      return abstractedFetch(`lyrics/${id}`).then((lyric) => {
+        const updatedLikes = lyric.likes + 1;
+
+        return abstractedPatch("lyrics", id, { likes: updatedLikes });
+      });
     },
   },
 };

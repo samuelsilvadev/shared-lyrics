@@ -30,7 +30,7 @@ const typeDefs = gql`
   type Mutation {
     addSong(title: String!): Song!
     deleteSong(id: ID!): Song!
-    addLyricIntoSong(songId: Int!, content: String!): Lyric!
+    addLyricIntoSong(songId: ID!, content: String!): Song!
   }
 `;
 
@@ -58,12 +58,16 @@ const resolvers = {
     addLyricIntoSong: (
       root: {},
       { songId, content }: { songId: number; content: string }
-    ) =>
-      abstractedPost("lyrics", {
-        songId,
-        content,
-        likes: 0,
-      }),
+    ) => {
+      return Promise.all([
+        abstractedPost("lyrics", {
+          songId,
+          content,
+          likes: 0,
+        }),
+        abstractedFetch(`songs/${songId}`),
+      ]).then(([lyric, song]) => song);
+    },
   },
 };
 

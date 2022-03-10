@@ -11,10 +11,18 @@ type LyricsListProps = {
 function LyricsList({ lyrics }: LyricsListProps) {
   const [like] = useMutation(LIKE_LYRIC_MUTATION);
 
-  const handleOnLike = (id: string) => () => {
+  const handleOnLike = (id: string, likes: number) => () => {
     like({
       variables: {
         likeLyricId: id,
+      },
+      optimisticResponse: {
+        __typename: "Mutation",
+        likeLyric: {
+          __typename: "Lyric",
+          id,
+          likes: likes + 1,
+        },
       },
     });
   };
@@ -50,7 +58,7 @@ function LyricsList({ lyrics }: LyricsListProps) {
                 h="auto"
                 leftIcon={<ThumbsUp />}
                 aria-label="Give a thumbs up to the this lyric"
-                onClick={handleOnLike(id)}
+                onClick={handleOnLike(id, likes)}
                 border="2px"
               >
                 <Badge fontSize="sm" variant="solid" colorScheme="yellow">

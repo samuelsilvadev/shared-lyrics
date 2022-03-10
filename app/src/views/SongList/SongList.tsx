@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { Box, Button, ListItem, UnorderedList } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Link } from "@chakra-ui/react";
 import { DELETE_SONG, GET_SONGS } from "./graphql";
 
 type GetSongsQueryResponse = {
@@ -55,7 +56,13 @@ function SongList() {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Link to={`/songs/${id}`}>{title}</Link>
+              <Link
+                textDecoration="underline"
+                as={RouterLink}
+                to={`/songs/${id}`}
+              >
+                {title}
+              </Link>
               <Button
                 variant="solid"
                 colorScheme="yellow"

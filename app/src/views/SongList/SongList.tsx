@@ -74,7 +74,12 @@ function SongList() {
           );
         })}
       </Box>
-      <Button as={Link} to="/songs/new" variant="solid" colorScheme="yellow">
+      <Button
+        as={RouterLink}
+        to="/songs/new"
+        variant="solid"
+        colorScheme="yellow"
+      >
         Create new song
       </Button>
     </>

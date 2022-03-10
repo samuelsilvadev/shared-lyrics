@@ -19,3 +19,16 @@ export const abstractedDelete = (endpoint: string, id: string) =>
   abstractedFetch(`${endpoint}/${id}`, {
     method: "DELETE",
   });
+
+export const abstractedPatch = (
+  endpoint: string,
+  id: string,
+  body: Record<string, string | number | boolean>
+) =>
+  abstractedFetch(`${endpoint}/${id}`, {
+    body: JSON.stringify(body),
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+    },
+  });

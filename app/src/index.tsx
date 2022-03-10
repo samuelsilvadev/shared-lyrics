@@ -7,7 +7,16 @@ import App from "./App";
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_SERVER,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Song: {
+        keyFields: ["id"],
+      },
+      Lyric: {
+        keyFields: ["id"],
+      },
+    },
+  }),
 });
 
 ReactDOM.render(

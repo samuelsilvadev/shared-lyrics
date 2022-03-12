@@ -1,5 +1,11 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { Box, Button, ListItem, UnorderedList } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  ListItem,
+  UnorderedList,
+} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from "@chakra-ui/react";
 import { DELETE_SONG, GET_SONGS } from "./graphql";
@@ -34,6 +40,9 @@ function SongList() {
 
   return (
     <>
+      <Heading as="h1" marginBlockStart="4">
+        List of available songs
+      </Heading>
       <Box
         as={UnorderedList}
         w="100%"

@@ -1,6 +1,6 @@
 {
   "name": "create-react-app-n",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.5.10",
@@ -38,7 +38,7 @@
     "eject": "react-scripts eject",
     "format": "prettier --write . --loglevel=error",
     "lint": "eslint . --ext .tsx,.ts,.js",
-    "release": "standard-version"
+    "release": "standard-version --no-verify -t app@v"
   },
   "eslintConfig": {
     "extends": [

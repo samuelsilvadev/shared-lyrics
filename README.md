@@ -2,6 +2,12 @@
 
 > Lyrics of songs created by different users.
 
+<br>
+
+<img src="./shared-lyrics.gif">
+
+<br>
+
 This project was developed in inspiration of the graphql course given by Stephen Grider 
 [here](https://www.udemy.com/course/graphql-with-react-course/). But as always 😅 I like to 
 tweak stuff a little bit, so in addition, I've changed the server to be fully on `ApolloServer`, and

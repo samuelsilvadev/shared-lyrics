@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/samuelsilvadev/shared-lyrics/compare/app@v0.0.3...app@v0.0.4) (2022-03-13)
+
 ### 0.0.3 (2022-03-12)
 
 

@@ -8,7 +8,7 @@
     "start:graphql": "nodemon --exec ts-node 'src/index.ts' --ignore \"db/**\"",
     "start:service": "json-server --watch db/index.json --port 4001",
     "format": "prettier --write . --loglevel=error",
-    "release": "standard-version --no-verify -t server@v"
+    "release": "DISABLE_CZ=true standard-version --no-verify -t server@v"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
@@ -34,7 +34,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+      "prepare-commit-msg": "[[ -z ${DISABLE_CZ} ]] && exec < /dev/tty && git cz --hook || true"
     }
   },
   "lint-staged": {
